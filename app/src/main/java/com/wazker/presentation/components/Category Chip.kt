@@ -24,24 +24,25 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wazker.R
+import com.wazker.presentation.design_system.theme.Theme
+import com.wazker.presentation.utils.BasePreview
+import com.wazker.presentation.utils.PreviewMultiDevices
 
 
 @Composable
 fun CategoryChip(
     text: String,
+    isCategoryTitle: Boolean,
     onClick: () -> Unit
 
 ){
     Box (
         modifier = Modifier
-            .height(169.dp)
+            .height(if (isCategoryTitle) 123.dp else 169.dp)
             .padding(horizontal = 24.dp)
             .clip(shape = RoundedCornerShape(size = 10.dp))
             .background(brush = Brush.verticalGradient(
-                colors = listOf(
-                    categoryChip1,
-                    categoryChip2
-                )
+                colors = Theme.colors.surfaceColors.categoryChip.colors
             )
             )
         .clickable { onClick() }
@@ -56,8 +57,8 @@ fun CategoryChip(
         )
         Text(
             text = text,
-            color = Color.White,
-            fontSize = 40.sp,
+            color = Theme.colors.text.title,
+            style = Theme.textStyleSora.headline.large,
             modifier = Modifier
                 .align(Alignment.Center)
 
@@ -77,13 +78,34 @@ private fun CategoryChipPreview() {
         ,verticalArrangement = Arrangement.Center
         ,horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        CategoryChip("أذكار الصباح",onClick = {})
+        CategoryChip("أذكار الصباح",onClick = {},isCategoryTitle = false)
         Spacer(modifier = Modifier.height(32.dp))
-        CategoryChip("أذكار المساء",onClick = {})
+        CategoryChip("أذكار المساء",onClick = {},isCategoryTitle = false)
 
     }
 
 }
+@Preview()
+@Composable
+private fun CategoryChipPreview2() {
+    CategoryChip("أذكار الصباح",onClick = {},isCategoryTitle = true)
 
-val categoryChip1 = Color(0xFF65D6FC)
-val categoryChip2 = Color(0xFF455EB5)
+}
+
+@PreviewMultiDevices
+@Composable
+private fun CategoryChipPreview3() {
+    BasePreview {
+        Column(
+            modifier = Modifier
+
+            ,verticalArrangement = Arrangement.Center
+            ,horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            CategoryChip("أذكار الصباح",onClick = {},isCategoryTitle = false)
+            Spacer(modifier = Modifier.height(32.dp))
+            CategoryChip("أذكار المساء",onClick = {},isCategoryTitle = true)
+
+        }
+    }
+}
