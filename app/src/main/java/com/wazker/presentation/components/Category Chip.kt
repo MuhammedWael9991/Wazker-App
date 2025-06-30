@@ -69,7 +69,7 @@ fun CategoryChip(
 
 @Preview(showSystemUi = true , device = Devices.PIXEL_6)
 @Composable
-fun CategoryChipPreview() {
+private fun CategoryChipPreview() {
     Column(
         modifier = Modifier
             .fillMaxSize()
