@@ -1,13 +1,15 @@
-package com.wazker
+package com.wazker.presentation.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,19 +23,19 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.wazker.ui.theme.categoryChip1
-import com.wazker.ui.theme.categoryChip2
+import com.wazker.R
+
 
 @Composable
 fun CategoryChip(
-    text: String
-    //onClick: () -> Unit
+    text: String,
+    onClick: () -> Unit
 
 ){
     Box (
         modifier = Modifier
-            .size(width = 326.dp, height = 169.dp)
-            .padding(10.dp)
+            .height(169.dp)
+            .padding(horizontal = 24.dp)
             .clip(shape = RoundedCornerShape(size = 10.dp))
             .background(brush = Brush.verticalGradient(
                 colors = listOf(
@@ -42,7 +44,7 @@ fun CategoryChip(
                 )
             )
             )
-        //.clickable { onClick() }
+        .clickable { onClick() }
     ){
         Image(
             painter = painterResource(id = R.drawable.mosque),
@@ -75,11 +77,13 @@ fun CategoryChipPreview() {
         ,verticalArrangement = Arrangement.Center
         ,horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        CategoryChip("أذكار الصباح")
-        CategoryChip("أذكار المساء")
+        CategoryChip("أذكار الصباح",onClick = {})
+        Spacer(modifier = Modifier.height(32.dp))
+        CategoryChip("أذكار المساء",onClick = {})
 
     }
 
 }
 
-
+val categoryChip1 = Color(0xFF65D6FC)
+val categoryChip2 = Color(0xFF455EB5)
