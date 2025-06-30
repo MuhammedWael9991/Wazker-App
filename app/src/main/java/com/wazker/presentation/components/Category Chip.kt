@@ -28,6 +28,8 @@ import com.wazker.presentation.design_system.theme.Theme
 import com.wazker.presentation.utils.BasePreview
 import com.wazker.presentation.utils.PreviewMultiDevices
 
+private val CATEGORY_TITLE_HEIGHT = 123.dp
+private val CATEGORY_ITEM_HEIGHT = 169.dp
 
 @Composable
 fun CategoryChip(
@@ -38,7 +40,7 @@ fun CategoryChip(
 ){
     Box (
         modifier = Modifier
-            .height(if (isCategoryTitle) 123.dp else 169.dp)
+            .height(if (isCategoryTitle) CATEGORY_TITLE_HEIGHT else CATEGORY_ITEM_HEIGHT)
             .padding(horizontal = 24.dp)
             .clip(shape = RoundedCornerShape(size = 10.dp))
             .background(brush = Brush.verticalGradient(
@@ -67,6 +69,9 @@ fun CategoryChip(
     }
 
 }
+
+
+
 
 @Preview(showSystemUi = true , device = Devices.PIXEL_6)
 @Composable
