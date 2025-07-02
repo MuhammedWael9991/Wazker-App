@@ -90,12 +90,7 @@ private fun CategoryChipPreview() {
     }
 
 }
-@Preview()
-@Composable
-private fun CategoryChipPreview2() {
-    CategoryChip("أذكار الصباح",onClick = {},isCategoryTitle = true)
 
-}
 
 @PreviewMultiDevices
 @Composable
