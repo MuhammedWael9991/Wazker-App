@@ -23,6 +23,7 @@ data class WazkerTextColor(
 
 data class SurfaceColors(
     val details: Color,
+    val wazkerButton: Color,
     val categoryChip: CategoryChip,
     val searchBar: SearchBar,
     val saveButton: SaveButton

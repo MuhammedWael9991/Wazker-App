@@ -18,6 +18,7 @@ val lightThemeColors = WazkerColors(
     ),
     surfaceColors = SurfaceColors(
         details = Color(0xFF0A2060),
+        wazkerButton = Color(0xFF0C2165),
         categoryChip = CategoryChip(
             listOf(
                 Color(0xFF65D6FC),
