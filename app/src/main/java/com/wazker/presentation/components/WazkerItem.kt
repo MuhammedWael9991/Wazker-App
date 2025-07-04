@@ -35,14 +35,18 @@ fun WazkerItem(
                 if (count == 0) count = counter else count--
             }
     ) {
-        // header
+        WazkerHeader(
+            id = id,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
         CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl){
             Text(
                 text = text,
                 color = Theme.colors.text.title,
                 style = Theme.textStyleAmiri.body.medium,
                 lineHeight = 28.sp,
-                textAlign = TextAlign.Right
+                textAlign = TextAlign.Right,
+                modifier = Modifier.padding(horizontal = 4.dp)
             )
         }
         Box(){

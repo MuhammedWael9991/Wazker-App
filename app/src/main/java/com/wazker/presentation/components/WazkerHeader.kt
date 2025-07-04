@@ -33,15 +33,18 @@ import com.wazker.presentation.design_system.theme.Theme
 import com.wazker.R
 
 @Composable
-fun WazkerHeader() {
+fun WazkerHeader(
+    id: Long,
+    modifier: Modifier = Modifier
+) {
 
     var isSaved by remember { mutableStateOf(false) }
     val context = LocalContext.current
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
-            .height(50.dp)
+            .height(70.dp)
             .padding(8.dp)
             .clip(RoundedCornerShape(10.dp))
             .background(color = Theme.colors.surfaceColors.details),
@@ -80,7 +83,7 @@ fun WazkerHeader() {
 
         }
         WazkerShape(
-            number = 1,
+            number = id.toInt(),
             isRound = true,
             modifier = Modifier
                 .align(alignment = Alignment.CenterEnd)
@@ -101,7 +104,7 @@ private fun WazkerHeaderPreview() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        WazkerHeader()
+        WazkerHeader(2)
     }
 
 }
