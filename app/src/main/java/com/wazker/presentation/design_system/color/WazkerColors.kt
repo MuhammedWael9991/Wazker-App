@@ -26,7 +26,8 @@ data class SurfaceColors(
     val wazkerButton: Color,
     val categoryChip: CategoryChip,
     val searchBar: SearchBar,
-    val saveButton: SaveButton
+    val saveButton: SaveButton,
+    val bottomSheet: bottomSheet
 )
 
 data class CategoryChip(
@@ -38,6 +39,10 @@ data class SearchBar(
 )
 
 data class SaveButton(
+    val colors: List<Color>,
+)
+
+data class bottomSheet(
     val colors: List<Color>,
 )
 
