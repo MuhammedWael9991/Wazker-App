@@ -41,7 +41,7 @@ val soraTextStyle = WazkerTextStyle(
     ),
     label = SizedTextStyle(
         large = TextStyle(
-            fontFamily = sora, fontWeight = FontWeight.Medium, fontSize = 16.sp
+            fontFamily = sora, fontWeight = FontWeight.Bold, fontSize = 16.sp
         ),
         medium = TextStyle(
             fontFamily = sora, fontWeight = FontWeight.Medium, fontSize = 14.sp
