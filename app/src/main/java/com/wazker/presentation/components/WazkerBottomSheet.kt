@@ -41,6 +41,7 @@ import kotlinx.coroutines.launch
 fun WazkerBottomSheet(
     text: String,
     visible: Boolean,
+    onTextChange: (String) -> Unit,
     onDismiss: () -> Unit,
     onSaveClicked: (String) -> Unit,
     onClickDelete: () -> Unit,
@@ -148,7 +149,7 @@ fun WazkerBottomSheet(
                     icon = R.drawable.ic_menu,
                     hint = "اكتب هنا",
                     modifier = Modifier.padding(bottom = 56.dp),
-                    onValueChange = {},
+                    onValueChange = {newValue -> onTextChange(newValue)},
                     enabled = true,
                     singleLine = true
                 )
@@ -192,8 +193,9 @@ fun BottomSheetPreview() {
         WazkerBottomSheet(
             onDismiss = {},
             onSaveClicked = {},
+            onTextChange = {},
             visible = true,
-            text = "",
+            text = "سبحان الله",
             isEditable = true,
             onClickDelete = {})
     }
