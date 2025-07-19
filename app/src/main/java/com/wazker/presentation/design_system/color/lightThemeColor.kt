@@ -36,6 +36,12 @@ val lightThemeColors = WazkerColors(
                 Color(0x8065D6FC),
                 Color(0xFF455EB5)
             )
+        ),
+        bottomSheet = bottomSheet(
+            listOf(
+                Color(0xFF455EB5),
+                Color(0xFF112095)
+            )
         )
     )
 )
