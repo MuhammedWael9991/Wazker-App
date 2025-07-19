@@ -34,13 +34,13 @@ private val CATEGORY_ITEM_HEIGHT = 169.dp
 fun CategoryChip(
     text: String,
     isCategoryTitle: Boolean,
-    onClick: () -> Unit
-
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ){
     Box (
-        modifier = Modifier
+        modifier = modifier
             .height(if (isCategoryTitle) CATEGORY_TITLE_HEIGHT else CATEGORY_ITEM_HEIGHT)
-            .padding(horizontal = 24.dp)
+            .padding(horizontal = 16.dp)
             .clip(shape = RoundedCornerShape(size = 10.dp))
             .background(brush = Brush.verticalGradient(
                 colors = Theme.colors.surfaceColors.categoryChip.colors
