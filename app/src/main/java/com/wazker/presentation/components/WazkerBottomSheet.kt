@@ -37,6 +37,9 @@ import com.wazker.R
 import com.wazker.presentation.design_system.theme.Theme
 import kotlinx.coroutines.launch
 
+private const val DRAG_THRESHOLD = 200f
+private const val ANIMATION_OFFSET_LIMIT = 1000f
+
 @Composable
 fun WazkerBottomSheet(
     text: String,
@@ -89,9 +92,9 @@ fun WazkerBottomSheet(
 
                         },
                         onDragStopped = {
-                            if (offsetY.value > 200f) {
+                            if (offsetY.value > DRAG_THRESHOLD) {
                                 scope.launch {
-                                    offsetY.animateTo(1000f)
+                                    offsetY.animateTo(ANIMATION_OFFSET_LIMIT)
                                     onDismiss()
                                     offsetY.snapTo(0f)
                                 }
