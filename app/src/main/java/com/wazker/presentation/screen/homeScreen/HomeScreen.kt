@@ -12,9 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.wazker.R
 import com.wazker.presentation.components.CategoryChip
 import com.wazker.presentation.design_system.theme.Theme
 
@@ -36,6 +38,7 @@ fun HomeScreenContent(
         content = { innerPadding ->
             Column(
                 modifier = Modifier
+                    .fillMaxSize()
                     .padding(innerPadding)
                     .background(
                         brush = Brush.verticalGradient(
@@ -63,8 +66,7 @@ fun HomeContent(
 
     ){
         Column(
-            modifier = Modifier
-                .fillMaxSize(),
+            modifier = Modifier,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
@@ -97,7 +99,7 @@ fun HomeContent(
             )
             CategoryChip(
 
-                text = "المفضلة",
+                text = stringResource(R.string.favourites),
                 isCategoryTitle = false,
                 onClick = { /* Handle click */ },
                 modifier = Modifier.padding(vertical = 16.dp)
