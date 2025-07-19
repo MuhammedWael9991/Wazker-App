@@ -1,5 +1,6 @@
 package com.wazker.presentation.components
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -13,6 +14,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -52,16 +57,19 @@ fun BottomNavBar(
 
         ) {
             items.forEachIndexed { currentIndex, item ->
+                val backgroundColor by animateColorAsState(
+                    if (currentIndex == selectedIndex)
+                        Color.White.copy(alpha = 0.16f)
+                    else
+                        Color.Transparent,
+                    label = ""
+                )
+
                 Box(
                     modifier = Modifier
                         .size(42.dp)
                         .clip(shape = RoundedCornerShape(size = 16.dp))
-                        .background(
-                            if (currentIndex == selectedIndex)
-                                Color.White.copy(alpha = 0.15f)
-                            else
-                                Color.Transparent
-                        )
+                        .background(backgroundColor)
                         .clickable { onItemSelected(currentIndex) },
                     contentAlignment = Alignment.Center
                 ) {
@@ -82,6 +90,7 @@ fun BottomNavBar(
 @Preview(showSystemUi = true)
 @Composable
 fun BottomNavPreview() {
+    var selectedIndex by remember { mutableIntStateOf(0) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -91,7 +100,7 @@ fun BottomNavPreview() {
         verticalArrangement = Arrangement.Bottom,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        BottomNavBar(selectedIndex = 2, onItemSelected = {})
+        BottomNavBar(selectedIndex = selectedIndex, onItemSelected = {selectedIndex = it})
 
     }
 }
